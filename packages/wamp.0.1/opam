@@ -12,14 +12,10 @@ tags: [
   "org:xapi-project"
 ]
 build: [
-  ["ocaml" "pkg/build.ml" "native=%{ocaml-native}%"
-                          "native-dynlink=%{ocaml-native-dynlink}%"
-  ]
+  "ocaml"
+  "pkg/build.ml"
+  "native=%{ocaml:native}%"
+  "native-dynlink=%{ocaml:native-dynlink}%"
 ]
-depends: [
-  "ppx_deriving"
-  "ppx_deriving_yojson"
-  "uri"
-]
-
-
+depends: ["ocaml" "ppx_deriving" "ppx_deriving_yojson" "uri"]
+flags: light-uninstall

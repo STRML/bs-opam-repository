@@ -7,12 +7,14 @@ homepage: "http://github.com/vbmithr/ocaml-dtc"
 dev-repo: "git://github.com/vbmithr/ocaml-dtc"
 bug-reports: "http://github.com/vbmithr/ocaml-dtc/issues"
 license: "ISC"
-
 build: [
-  [ "ocaml" "pkg/build.ml" "native=true" "native-dynlink=true" ]
+  "ocaml"
+  "pkg/build.ml"
+  "native=%{ocaml:native}%"
+  "native-dynlink=%{ocaml:native-dynlink}%"
 ]
-
 depends: [
+  "ocaml"
   "ocamlfind" {build}
   "core"
   "async"
@@ -20,3 +22,4 @@ depends: [
   "cstruct"
   "leveldb"
 ]
+flags: light-uninstall

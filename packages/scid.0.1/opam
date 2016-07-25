@@ -8,6 +8,16 @@ bug-reports: "http://github.com/vbmithr/ocaml-scid/issues"
 dev-repo: "git://github.com/vbmithr/ocaml-scid"
 license: "ISC"
 build: [
-  [ "ocaml" "pkg/build.ml" "native=true" "native-dynlink=true" ]
+  "ocaml"
+  "pkg/build.ml"
+  "native=%{ocaml:native}%"
+  "native-dynlink=%{ocaml:native-dynlink}%"
 ]
-depends: ["ocamlfind" {build} "ppx_deriving_yojson" "ounit" "ocplib-endian"]
+depends: [
+  "ocaml"
+  "ocamlfind" {build}
+  "ppx_deriving_yojson"
+  "ounit"
+  "ocplib-endian"
+]
+flags: light-uninstall
